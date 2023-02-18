@@ -15,7 +15,7 @@ namespace OrderManagement.Persistance.Contexts
             {
                 ConfigurationManager configurationManager = new();
                 configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(),
-                    "../../Presentation/ETrade.WebAPI"));
+                    "../../Presentation/OrderManagement.WebAPI"));
                 configurationManager.AddJsonFile("appsettings.json");
 
                 return configurationManager.GetConnectionString("DefaultConnection");
