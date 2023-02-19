@@ -26,7 +26,7 @@ namespace OrderManagement.Persistance.Contexts.FluentAPIConfiguration
 
             builder.Property(x => x.Price).HasColumnType("money");
             builder.Property(x => x.ProductName).HasMaxLength(25);
-            builder.Property(x => x.CreatedDate).HasDefaultValueSql("GetUtcDate()");
+            builder.Property(x => x.CreatedDate).HasDefaultValueSql("GetDate()");
         }
     }
 }

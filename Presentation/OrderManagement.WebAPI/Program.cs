@@ -1,10 +1,16 @@
+using System.Text.Json.Serialization;
+using OrderManagement.Application;
 using OrderManagement.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.RegisterServices();
-builder.Services.AddControllers();
+builder.Services.AddPersistenceServices();
+builder.Services.AddApplicationServices();
+builder.Services.AddControllers().AddJsonOptions(opt =>
+{
+    opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

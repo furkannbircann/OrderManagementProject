@@ -19,9 +19,9 @@ namespace OrderManagement.Persistance.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CompanyName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     IsApproved = table.Column<bool>(type: "bit", nullable: true, defaultValue: true),
-                    OrderStartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    OrderFinishTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetUtcDate()")
+                    OrderStartTime = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    OrderFinishTime = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetDate()")
                 },
                 constraints: table =>
                 {
@@ -38,7 +38,7 @@ namespace OrderManagement.Persistance.Migrations
                     ProductName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "money", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetUtcDate()")
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetDate()")
                 },
                 constraints: table =>
                 {
@@ -60,8 +60,8 @@ namespace OrderManagement.Persistance.Migrations
                     CompanyId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     OrdererName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetUtcDate()")
+                    OrderDate = table.Column<DateTime>(type: "smalldatetime", nullable: false, defaultValueSql: "GetDate()"),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetDate()")
                 },
                 constraints: table =>
                 {

@@ -8,9 +8,9 @@ using OrderManagement.Domain.Entities;
 
 namespace OrderManagement.Persistance.Contexts
 {
-    public class OrderManagementContext : DbContext
+    public class OrderManagementDbContext : DbContext
     {
-        public OrderManagementContext(DbContextOptions options) : base(options)
+        public OrderManagementDbContext(DbContextOptions options) : base(options)
         {
 
         }
@@ -21,7 +21,9 @@ namespace OrderManagement.Persistance.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrderManagementContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrderManagementDbContext).Assembly);
+            modelBuilder.Entity<Company>().Navigation(e => e.Products).AutoInclude();
+            modelBuilder.Entity<Company>().Navigation(e => e.Orders).AutoInclude();
         }
     }
 }

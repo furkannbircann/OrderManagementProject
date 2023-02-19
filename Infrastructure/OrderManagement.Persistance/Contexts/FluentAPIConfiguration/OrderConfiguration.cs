@@ -24,8 +24,10 @@ namespace OrderManagement.Persistance.Contexts.FluentAPIConfiguration
                  .WithMany(i => i.Orders)
                  .HasForeignKey(i => i.ProductId).OnDelete(DeleteBehavior.ClientNoAction);
 
+            builder.Property(x => x.OrderDate).HasColumnType("smalldatetime");
+            builder.Property(x => x.OrderDate).HasDefaultValueSql("GetDate()");
             builder.Property(x => x.OrdererName).HasMaxLength(25);
-            builder.Property(x => x.CreatedDate).HasDefaultValueSql("GetUtcDate()");
+            builder.Property(x => x.CreatedDate).HasDefaultValueSql("GetDate()");
         }
     }
 }

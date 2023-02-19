@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderManagement.Persistance.Contexts;
 
@@ -10,10 +11,12 @@ using OrderManagement.Persistance.Contexts;
 
 namespace OrderManagement.Persistance.Migrations
 {
-    [DbContext(typeof(OrderManagementContext))]
-    partial class OrderManagementContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(OrderManagementDbContext))]
+    [Migration("20230219171312_mg_1")]
+    partial class mg_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,7 +41,7 @@ namespace OrderManagement.Persistance.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GetUtcDate()");
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<bool?>("IsApproved")
                         .ValueGeneratedOnAdd()
@@ -46,10 +49,10 @@ namespace OrderManagement.Persistance.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("OrderFinishTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("smalldatetime");
 
                     b.Property<DateTime>("OrderStartTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("smalldatetime");
 
                     b.HasKey("Id");
 
@@ -70,10 +73,12 @@ namespace OrderManagement.Persistance.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GetUtcDate()");
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("smalldatetime")
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<string>("OrdererName")
                         .IsRequired()
@@ -106,7 +111,7 @@ namespace OrderManagement.Persistance.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GetUtcDate()");
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("money");

@@ -24,9 +24,12 @@ namespace OrderManagement.Persistance.Contexts.FluentAPIConfiguration
                 .WithOne(i => i.Company)
                 .HasForeignKey(i => i.CompanyId);
 
+            builder.Property(x => x.OrderStartTime).HasColumnType("smalldatetime");
+            builder.Property(x => x.OrderFinishTime).HasColumnType("smalldatetime");
             builder.Property(x => x.CompanyName).HasMaxLength(25);
             builder.Property(x => x.IsApproved).HasDefaultValue(true);
-            builder.Property(x => x.CreatedDate).HasDefaultValueSql("GetUtcDate()");
+            builder.Property(x => x.CreatedDate).HasDefaultValueSql("GetDate()");
+
         }
     }
 }
