@@ -24,13 +24,13 @@ namespace OrderManagement.Application.Features.Commands.OrderCommands.CreateOrde
             CancellationToken cancellationToken)
         {
             Domain.Entities.Company company = await _companyReadRepository.GetByIdAsync(request.CompanyId);
-            var orderStartTime = company.OrderStartTime.Hour;
-            var orderFinishTime = company.OrderFinishTime.Hour;
-            var orderDate = request.OrderDate.Hour;
+            var orderStartTime = company.OrderStartTime;
+            var orderFinishTime = company.OrderFinishTime;
+            var orderDate = request.OrderDate;
 
             if (company.IsApproved == true)
             {
-                if (orderDate > orderStartTime && orderDate < orderFinishTime)
+                if (orderDate.TimeOfDay > orderStartTime.TimeOfDay && orderDate.TimeOfDay < orderFinishTime.TimeOfDay)
                 {
                     Domain.Entities.Order order = new()
                     {
