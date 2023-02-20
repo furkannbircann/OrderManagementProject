@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using OrderManagement.Application.Repositories.CompanyRepositories;
 using OrderManagement.Application.Repositories.OrderRepositories;
+using OrderManagement.Domain.Constants;
 
 namespace OrderManagement.Application.Features.Commands.OrderCommands.CreateOrder
 {
@@ -43,10 +44,10 @@ namespace OrderManagement.Application.Features.Commands.OrderCommands.CreateOrde
                     await _orderWriteRepository.SaveAsync();
                     return new();
                 }
-                throw new Exception("Firma şuan sipariş almıyor");
+                throw new Exception(OrderMessages.CurrentlyUnableToTakeOrders);
 
             }
-            throw new Exception("Firma onaylı değil");
+            throw new Exception(OrderMessages.CompanyIsNotApproved);
         }
     }
 }

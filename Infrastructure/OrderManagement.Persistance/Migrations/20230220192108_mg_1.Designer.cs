@@ -12,7 +12,7 @@ using OrderManagement.Persistance.Contexts;
 namespace OrderManagement.Persistance.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
-    [Migration("20230219171312_mg_1")]
+    [Migration("20230220192108_mg_1")]
     partial class mg_1
     {
         /// <inheritdoc />
