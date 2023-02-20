@@ -12,12 +12,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="TechBuddy.Middlewares.ExceptionHandling" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\OrderManagement.Application\OrderManagement.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\OrderManagement.Infrastructure\OrderManagement.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\OrderManagement.Persistance\OrderManagement.Persistance.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middlewares\" />
   </ItemGroup>
 
 </Project>
