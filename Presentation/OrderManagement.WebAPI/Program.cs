@@ -3,7 +3,6 @@ using System.Text.Json.Serialization;
 using OrderManagement.Application;
 using OrderManagement.Persistance;
 using OrderManagement.WebAPI.Extensions;
-using TechBuddy.Middlewares.ExceptionHandling;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,14 +30,7 @@ app.ConfigureExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-//app.AddTBExceptionHandlingMiddleware(opt =>
-//{
-//    opt.ExceptionHandlerAction = async (httpContext, ex) =>
-//    {
-//        httpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-//        await httpContext.Response.WriteAsync(ex.Message);
-//    };
-//});
+
 
 app.MapControllers();
 
