@@ -27,18 +27,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-//app.ConfigureExceptionHandler();
+app.ConfigureExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-app.AddTBExceptionHandlingMiddleware(opt =>
-{
-    opt.ExceptionHandlerAction = async (httpContext, ex) =>
-    {
-        httpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-        await httpContext.Response.WriteAsync(ex.Message);
-    };
-});
+//app.AddTBExceptionHandlingMiddleware(opt =>
+//{
+//    opt.ExceptionHandlerAction = async (httpContext, ex) =>
+//    {
+//        httpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+//        await httpContext.Response.WriteAsync(ex.Message);
+//    };
+//});
 
 app.MapControllers();
 
